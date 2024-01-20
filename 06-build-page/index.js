@@ -38,24 +38,6 @@ function mergeStyles() {
   );
 }
 
-function replaceTags(componentName, peace) {
-  const html = path.join(__dirname, 'template.html');
-  const readHTML = fs.createReadStream(html, 'utf-8');
-  const writeHTML = fs.createWriteStream(
-    path.join(projectFolder, 'index.html'),
-  );
-
-  readHTML.on('data', (chunk) => {
-    fs.writeFile(
-      path.join(projectFolder, 'index.html'),
-      chunk.replace(`{{${path.parse(componentName).name}}}`, peace),
-      (err) => {
-        if (err) throw err;
-      },
-    );
-  });
-}
-
 function generateHTML() {
   fs.createReadStream(path.join(__dirname, 'template.html'), 'utf-8').on(
     'data',
