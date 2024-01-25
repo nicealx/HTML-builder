@@ -52,7 +52,7 @@ function generateHTML() {
             );
 
             readFile.on('data', (read) => {
-              html = html.replace(`{{${path.parse(file.name).name}}}`, read);
+              html = html.replaceAll(`{{${path.parse(file.name).name}}}`, read);
             });
             readFile.on('end', () => {
               fs.createWriteStream(
